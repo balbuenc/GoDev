@@ -182,7 +182,7 @@
         </header>
         <main>
 
-           <%-- <div class="preloader bg-soft flex-column justify-content-center align-items-center">
+            <%-- <div class="preloader bg-soft flex-column justify-content-center align-items-center">
                 <div class="loader-element">
                     <span class="loader-animated-dot"></span>
                     <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
@@ -202,6 +202,15 @@
             <section class="container-fluid">
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="label label-info" style="text-align:right"><h5>Importación de facturas</h5></div>
+                            </div>
+                            <div class="col-4">
+                                <asp:FileUpload ID="FileUpload1" runat="server" />
+                                <asp:Button ID="btnImport" runat="server" Text="Import"  OnClick="ImportCSV" />
+                            </div>
+                        </div>
                         <asp:Panel runat="server" DefaultButton="SearchBtn">
                             <div class="row">
                                 <div class="col-4 font-weight-bold">
@@ -246,6 +255,7 @@
                                                 <i class="fas fa-camera fa-sm"  style="padding:5px"></i>
                                                 </div>
                                         </asp:LinkButton>
+
                                     </div>
                                 </div>
 
@@ -439,7 +449,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">
-                                                            EMISIÓN
+                                                            FEC. EMISIÓN
                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
                                                                  ControlToValidate="txtfecha_emision"
                                                                  Display="Static"
@@ -467,11 +477,11 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             FEC. DESEMBOLSO
-                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                                                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                                                  ControlToValidate="txtfecha_desembolso"
                                                                  Display="Static"
                                                                  ErrorMessage="*"
-                                                                 runat="server" />
+                                                                 runat="server" />--%>
                                                         </div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
@@ -480,11 +490,11 @@
                                                     <div class="row">
                                                         <div class="col-3">
                                                             FEC. COBRO
-                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
+                                                           <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
                                                                  ControlToValidate="txtfecha_cobro"
                                                                  Display="Static"
                                                                  ErrorMessage="*"
-                                                                 runat="server" />
+                                                                 runat="server" />--%>
                                                         </div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
@@ -523,15 +533,15 @@
                                                             <asp:TextBox ID="txtconcepto" runat="server" Text='<%# Bind("concepto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <%--  <div class="row">
                                                         <div class="col-3">
                                                             %ADELANTO
                                                         </div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>'  CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
-                                                    </div>
-                                                   <%-- <div class="row">
+                                                    </div>--%>
+                                                    <%-- <div class="row">
                                                         <div class="col-3">
                                                             DESCUENTO
                                                         </div>
@@ -539,7 +549,6 @@
                                                             <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>--%>
-
                                                 </div>
 
                                                 <hr />
@@ -671,7 +680,7 @@
                                                     <div class="row">
                                                         <div class="col-3">%ADELANTO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -679,7 +688,7 @@
                                                             DESCUENTO
                                                         </div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -729,7 +738,7 @@
                         <asp:Parameter Name="monto" Type="Decimal" />
                         <asp:Parameter Name="id_moneda" Type="Int32" />
                         <asp:Parameter Name="concepto" Type="String" />
-                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" />
+                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" DefaultValue="0" />
                         <asp:Parameter Name="fecha_vencimiento" Type="DateTime" />
                         <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
                         <asp:Parameter Name="descuento" Type="Decimal" />
