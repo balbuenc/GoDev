@@ -216,7 +216,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                         <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
                                                     </div>
 
-                                                    <asp:TextBox ID="UsernameTextbox" CssClass="form-control" runat="server" Style="padding: 4px 4px 4px 4px" />
+                                                    <asp:TextBox ID="UsernameTextbox" CssClass="form-control" runat="server" Style="padding: 4px 4px 4px 4px" TabIndex="0" />
                                                 </div>
                                             </div>
                                         </div>
@@ -265,7 +265,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                         <div class="dropdown mb-4 mb-lg-0">
                             <p>Asunción, Paraguay</p>
-                            <p>Teléfono de contacto -  +595986118816</p>
+                            <p>Teléfono de contacto -  +595 0985 678599</p>
                             <p>Mail de contacto -  hola@gofactoring.com.py</p>
                             <!--<a id="langsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle footer-language-link">
                         <img src="../assets/img/flags/united-states-of-america.svg" alt="USA Flag" class="language-flag"> English
@@ -282,8 +282,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <h6>Información</h6>
                         <ul class="links-vertical">
                             <li><a target="_blank" href="politicas.html">Política de Privacidad</a></li>
-                            <li><a target="_blank" href="legal.html">Información Legales</a></li>
-                            <li><a target="_blank" href="novedades.html">Novedades</a></li>
+                            <li><a target="_blank" href="legal.html">Términos y condiciones</a></li>
+                            <li><a target="_blank" href="https://www.youtube.com/channel/UC1fkOXILat5xvNvAQ2TpfFw">Novedades</a></li>
                         </ul>
 
                     </div>

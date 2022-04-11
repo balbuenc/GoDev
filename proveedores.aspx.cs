@@ -42,11 +42,19 @@ namespace GoWebForms
 
                 //Seteo el menu segun el rol del usuario
                 SetFunctionsMenu();
+
+
+
+                
             }
         }
 
         protected void SetFunctionsMenu()
         {
+            //Inhabilitar navbarglobal
+            navbar_global.Visible = false;
+            navbar_global_collapse.Visible = false;
+
             if (Session["UserRole"].ToString() == "INVERSOR")
             {
                 li_formulas.Visible = true;
@@ -55,6 +63,8 @@ namespace GoWebForms
                 li_cliente.Visible = true;
                 li_providers.Visible = true;
                 li_invoices.Visible = true;
+
+                
 
             }
             else if (Session["UserRole"].ToString() == "CLIENTE")

@@ -40,6 +40,10 @@ namespace GoWebForms
 
         protected void SetFunctionsMenu()
         {
+            //Inhabilitar navbarglobal
+            navbar_global.Visible = false;
+            navbar_global_collapse.Visible = false;
+
             if (Session["UserRole"].ToString() == "INVERSOR")
             {
                 li_formulas.Visible = true;

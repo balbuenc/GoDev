@@ -5283,6 +5283,7 @@ input[type="button"].btn-block {
     width: auto;
 }
 
+
 .btn-group > .btn:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
     margin-left: -0.0625rem;
@@ -35892,7 +35893,14 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
     width: auto;
 }
 
+/*
+ * Para menu loggeado
+*/
 
+.navbarlog {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
 
 
 

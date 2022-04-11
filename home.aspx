@@ -118,6 +118,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
                     </div>
                 </div>
+
+                <%-- NavBar Global --%>
+
                 <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                     <!--<li class="nav-item">
                         <a href="home.aspx" class="nav-link">Inicio</a>
@@ -579,7 +582,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     <div class="collapse" id="panel-1">
                                         <div class="pt-3">
                                             <p class="mb-0">
-                                                Somos la única plataforma en Paraguay que no financia directamente a las pymes por lo que podemos procesar las operaciones de factoring de cualquier entidad financiera, fondo de inversión o inversionista SIN CONFLICTO DE INTERES.
+                                                Somos la única plataforma en Paraguay que no financia directamente a las pymes por lo que podemos procesar las operaciones de factoring de cualquier entidad financiera, fondo de inversión o inversionista SIN CONFLICTO DE INTERÉS.
                                             </p>
                                             <p class="mb-0">
                                                 Al no ofrecer prestamos directamente, nuestro interés se centra en fomentar el mayor número de operaciones posible, lo que deriva necesariamente en aumentar la cobertura del factoring en la economía.
@@ -595,7 +598,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     <div class="collapse" id="panel-2">
                                         <div class="pt-3">
                                             <p class="mb-0">
-                                               El factoring consiste en el adelanto de pago de facturas de venta con un descuento que depende del plazo en el que la factura será pagada. El descuento también puede variar dependiendo de quien es pagara dicha factura.
+                                               El factoring consiste en el adelanto de pago de facturas de venta con un descuento que depende del plazo en el que la factura será pagada. El descuento también puede variar dependiendo de quien pagara dicha factura.
                                              </p>
                                              <p class="mb-0">
                                                  En Gofactoring procesamos el adelanto de pago de facturas emitidas a nuestras empresas aliadas por los proveedores registrados en el sitio.
@@ -644,7 +647,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     <div class="collapse" id="panel-5">
                                         <div class="pt-3">
                                             <p class="mb-0">
-                                                GoFactoring, con el objetivo de integración a sistemas de gestión integral (ERP) cuenta con APIS de integración que operan con sistemas de clase mundial como SAP, Dynamics AX y otros. Si estas en una etapa inicial y tu empresa no cuenta aun con un ERP, brindamos APIs de migración de información basados en archivos estándares de intercambio con formatos abiertos Ej.: CSV, XML, JSON.
+                                                GoFactoring, con el objetivo de integración a sistemas de gestión integral (ERP) cuenta con APIS de integración que operan con sistemas de clase mundial como SAP, Dynamics AX y otros. Si estas en una etapa inicial y tu empresa no cuenta aún con un ERP, brindamos APIs de migración de información basados en archivos estándares de intercambio con formatos abiertos Ej.: CSV, XML, JSON.
                                             </p>
                                         </div>
                                     </div>
@@ -765,7 +768,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 <div class="card-body text-center bg-primary border-right border-default py-4">
                                     <!-- Heading -->
                                     <h2 class="font-weight-bold">
-                                        <span class="h1 mr-2">52 proveedores</span>
+                                        <span class="h1 mr-2">1 proveedor</span>
                                     </h2>
                                     <!-- Text -->
                                     <span class="h5 font-weight-normal">Proveedores aliados a GoFactoring.</span>
@@ -795,7 +798,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h2 class="mb-4">Clientes</h2>
                 <p class="lead mb-5">Unirse a <span class="font-weight-bolder">100+</span> usuarios</p>
                 <a href="#" class="icon icon-lg text-gray mr-3">
-                   <img src="../assets/img/brand/sertec.png">
+                   <img src="../assets/img/brand/bluefact.png">
                 </a>
                 <!--<a href="#" class="icon icon-lg text-gray mr-3">
                 <img src="https://connectamericas.com/sites/default/files/content-idb/verifiedbadge.png" />
@@ -883,7 +886,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <!--<p class="my-4">Un aliado para tu negocio</p>-->
                 <div class="dropdown mb-4 mb-lg-0">
                     <p>Asunción, Paraguay</p>
-                    <p>Teléfono de contacto -  +595986118816</p>
+                    <p>Teléfono de contacto -  +595 0985 678599</p>
                     <p>Mail de contacto -  hola@gofactoring.com.py</p>
                     <!--<a id="langsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle footer-language-link">
                         <img src="../assets/img/flags/united-states-of-america.svg" alt="USA Flag" class="language-flag"> English
@@ -900,8 +903,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h6>Información</h6>
                 <ul class="links-vertical">
                     <li><a target="_blank" href="politicas.html">Política de Privacidad</a></li>
-                    <li><a target="_blank" href="legal.html">Información Legales</a></li>
-                    <li><a target="_blank" href="novedades.html">Novedades</a></li>
+                    <li><a target="_blank" href="legal.html">Términos y condiciones</a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/channel/UC1fkOXILat5xvNvAQ2TpfFw">Novedades</a></li>
                 </ul>
                 
             </div>

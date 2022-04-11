@@ -15,7 +15,7 @@ namespace GoWebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public void Login_OnClick(object sender, EventArgs args)
@@ -26,6 +26,7 @@ namespace GoWebForms
             }
             else
                 Msg.Text = "Error en inicio de sesión. Favor verifique sus credenciales e intente de nuevo.";
+                
         }
 
 

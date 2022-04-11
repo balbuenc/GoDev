@@ -81,7 +81,10 @@
                         <img class="navbar-brand-dark common" src="../assets/img/brand/gofactoring2.png" height="35" alt="Logo light">
                         <img class="navbar-brand-light common" src="../assets/img/brand/gofactoring.png" height="35" alt="Logo dark">
                     </a>
-                    <div class="navbar-collapse collapse" id="navbar_global">
+
+
+                    <%--INICIO MENU GLOBAL--%>
+                    <div class="navbar-collapse collapse" id="navbar_global" runat="server">
                         <div class="navbar-collapse-header">
                             <div class="row">
                                 <div class="col-6 collapse-brand">
@@ -99,13 +102,54 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
+                        <%--<div class="btn-group">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Funciones
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li id="li_providers" runat="server"><a class="dropdown-item" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
+                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
+                                    <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
+                                    <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
+                                    <li id="li_asignaciones" runat="server"><a class="dropdown-item" href="Asignaciones.aspx">Asignaciones</a></li>
+                                </ul>
+                            </div>
+                            <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button runat="server" id="BtnLogout" class="btn btn-sm btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
+                                <i class="fas fa-sign-out-alt"></i>Salir
+                            </button>
+                        </div>--%>
+
+                        <div class="d-lg-block @@cta_button_classes js-login1">
+                        </div>
+                    </div>
+
+                    <div class="d-flex d-lg-none align-items-center" runat="server" id="navbar_global_collapse">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                            aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <%--FIN MENU GLOBAL--%>
+
+                    <%--NAVBAR--%>
+                    <div class="navbarlog">
+                        
                         <div class="btn-group">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                     Funciones
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_providers" runat="server"><a class="dropdown-item" href="Proveedores.aspx">Proveedores</a></li>
                                     <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
                                     <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
                                     <li>
@@ -125,17 +169,11 @@
                             </button>
                         </div>
 
-
                         <div class="d-lg-block @@cta_button_classes js-login1">
                         </div>
                     </div>
 
-                    <div class="d-flex d-lg-none align-items-center">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
-                            aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
+
                 </div>
             </nav>
         </header>
@@ -577,7 +615,7 @@
                             </a>
                             <div class="dropdown mb-4 mb-lg-0">
                                 <p>Asunción, Paraguay</p>
-                                <p>Teléfono de contacto -  +595986118816</p>
+                                <p>Teléfono de contacto -  +595 0985 678599</p>
                                 <p>Mail de contacto -  hola@gofactoring.com.py</p>
                             </div>
                         </div>
@@ -585,8 +623,10 @@
                             <h6>Información</h6>
                             <ul class="links-vertical">
                                 <li><a target="_blank" href="politicas.html">Política de Privacidad</a></li>
-                                <li><a target="_blank" href="legal.html">Información Legales</a></li>
-                                <li><a target="_blank" href="novedades.html">Novedades</a></li>
+                                <li><a target="_blank" href="legal.html">Términos y condiciones</a></li>
+                                <li><a target="_blank" href="https://www.youtube.com/channel/UC1fkOXILat5xvNvAQ2TpfFw">Novedades</a></li>
+
+                                
                             </ul>
                         </div>
 
