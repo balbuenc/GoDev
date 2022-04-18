@@ -29,6 +29,7 @@ namespace GoWebForms
             else
             {
                 BtnUser.InnerHtml = "<i class='fas fa-user'></i> " + User.Identity.Name;
+                Session["USERNAME"] = User.Identity.Name;
 
                 if (Session["UserRole"] == null)
                     Session["UserRole"] = GetUserRole(User.Identity.Name);
@@ -174,18 +175,18 @@ namespace GoWebForms
             {
                 System.Data.DataRowView rowView = e.Item.DataItem as System.Data.DataRowView;
                 string currentInvoiceStatus = rowView["estado"].ToString();
-                if (currentInvoiceStatus == "CARGADA")
+                if (currentInvoiceStatus == "PENDIENTE")
                 {
                     RequestFacturaBtn.Visible = true;
                     EditFacturaBtn.Visible = true;
                     DeleteFacturaBtn.Visible = true;
                     FactoringFacturaBtn.Visible = false;
                 }
-                else if (currentInvoiceStatus == "SOLICITADO")
+                else if (currentInvoiceStatus == "SOLICITADA")
                 {
                     RequestFacturaBtn.Visible = false;
-                    EditFacturaBtn.Visible = true;
-                    DeleteFacturaBtn.Visible = true;
+                    EditFacturaBtn.Visible = false;
+                    DeleteFacturaBtn.Visible = false;
 
                     if (Session["UserRole"].ToString() == "INVERSOR" || Session["UserRole"].ToString() == "CLIENTE")
                     {
@@ -198,6 +199,38 @@ namespace GoWebForms
                     EditFacturaBtn.Visible = false;
                     DeleteFacturaBtn.Visible = false;
                     FactoringFacturaBtn.Visible = false;
+                }
+            }
+
+        }
+
+        protected void CobranzasListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditFacturaBtn = (LinkButton)e.Item.FindControl("EditFacturaBtn");
+           
+            LinkButton DepositarFacturaBtn = (LinkButton)e.Item.FindControl("DepositarFacturaBtn");
+
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                System.Data.DataRowView rowView = e.Item.DataItem as System.Data.DataRowView;
+                string currentInvoiceStatus = rowView["estado"].ToString();
+                if (currentInvoiceStatus == "APROBADA")
+                {
+                    if (Session["UserRole"].ToString() == "INVERSOR" || Session["UserRole"].ToString() == "CLIENTE")
+                    {
+                        EditFacturaBtn.Visible = true;
+                        DepositarFacturaBtn.Visible = true;
+                    }
+                    else
+                    {
+                        EditFacturaBtn.Visible = false;
+                        DepositarFacturaBtn.Visible = false;
+                    }
+                }
+                else
+                {
+                    EditFacturaBtn.Visible = false;
+                    DepositarFacturaBtn.Visible = false;
                 }
             }
 
@@ -254,8 +287,6 @@ namespace GoWebForms
         {
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
-
-
 
             try
             {
@@ -331,6 +362,7 @@ namespace GoWebForms
             FacturaListView.DataBind();
 
         }
+
         protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (e.CommandName == "Editar")
@@ -340,8 +372,6 @@ namespace GoWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                "$('#editModal').modal('show');", true);
 
-
-
             }
             else if (e.CommandName == "Eliminar")
             {
@@ -350,13 +380,27 @@ namespace GoWebForms
             }
             else if (e.CommandName == "Solicitar")
             {
-                RequestFactoring(e.CommandArgument.ToString(), "SOLICITADO");
+                RequestFactoring(e.CommandArgument.ToString(), "SOLICITADA");
                 FacturaListView.DataBind();
             }
             else if (e.CommandName == "Factorizar")
             {
-                RequestFactoring(e.CommandArgument.ToString(), "FACTORIZADA");
+                RequestFactoring(e.CommandArgument.ToString(), "APROBADA");
                 FacturaListView.DataBind();
+            }
+        }
+
+        protected void CobranzasListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Depositar")
+            {
+                RequestFactoring(e.CommandArgument.ToString(), "DEPOSITADO");
+                CobranzasListView.DataBind();
+            }
+            if (e.CommandName == "Cobrar")
+            {
+                RequestFactoring(e.CommandArgument.ToString(), "COBRADO");
+                CobranzasListView.DataBind();
             }
         }
 
@@ -390,7 +434,6 @@ namespace GoWebForms
 
         protected void FacturaListView_PreRender(object sender, EventArgs e)
         {
-
             foreach (ListViewItem lvi in FacturaListView.Items)
             {
                 if (lvi.ItemType == ListViewItemType.DataItem)
@@ -450,13 +493,19 @@ namespace GoWebForms
 
         protected void SetCellStyle(HtmlTableCell cell, string feature, int Permission)
         {
-            //Obtengo el row del Feature
-            DataRow row = GetFeatureValue(feature);
+            try
+            {
+                //Obtengo el row del Feature
+                DataRow row = GetFeatureValue(feature);
 
-            if (row[Permission].ToString() == "True")
-                cell.Style.Add("display", "table-cell");
-            else
-                cell.Style.Add("display", "none");
+                if (row[Permission].ToString() == "True")
+                    cell.Style.Add("display", "table-cell");
+                else
+                    cell.Style.Add("display", "none");
+            }
+            catch (Exception ex){
+                return;
+            }
         }
 
         protected void FacturaListView_DataBound(object sender, EventArgs e)
@@ -560,17 +609,18 @@ namespace GoWebForms
                 cmd.CommandText = "go.sp_generate_simulation";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-
-
-
-
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
-
-                Response.Redirect("facturas.aspx");
-
+                if(Request.QueryString["pageNumber"] != null)
+                {
+                    Response.Redirect("facturas.aspx?pageNumber=" + Request.QueryString["pageNumber"]);
+                }
+                else
+                {
+                    Response.Redirect("facturas.aspx?pageNumber=1" );
+                }
             }
             catch (Exception ex)
             {
@@ -638,5 +688,22 @@ namespace GoWebForms
             Response.Redirect("facturas.aspx");
         }
 
+        protected void PendientesButton_Click(object sender, EventArgs e)
+        {
+            lblState.Text = "PENDIENTE";
+            MultiViewPager.ActiveViewIndex = 0;
+        }
+
+        protected void CobranzasButton_Click(object sender, EventArgs e)
+        {
+            lblState.Text = "COBRANZAS";
+            MultiViewPager.ActiveViewIndex = 1;
+        }
+
+        protected void ConciliacionesButton_Click(object sender, EventArgs e)
+        {
+            lblState.Text = "CONCILIACIONES";
+            MultiViewPager.ActiveViewIndex = 2;
+        }
     }
 }
